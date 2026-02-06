@@ -97,12 +97,19 @@ Payment:`;
             </div>
           </div>
 
-          <div style={{ marginTop: 12 }} className="card">
-            <div style={{ fontWeight: 800 }}>Allergens (exact as on packaging)</div>
-            <div className="small" style={{ marginTop: 10 }}>
-              PASTE EXACT ALLERGENS TEXT FROM JAR HERE (or “None”)
-            </div>
-          </div>
+   <div style={{ marginTop: 18 }} className="card">
+  <div style={{ fontWeight: 800 }}>Ingredients (exact as on packaging)</div>
+  <div className="small" style={{ marginTop: 10 }}>
+    Wheat flour rolls, zaatar (thyme, sesame seeds, sumac, salt), olive oil.
+  </div>
+</div>
+<div style={{ marginTop: 12 }} className="card">
+  <div style={{ fontWeight: 800 }}>Allergens (exact as on packaging)</div>
+  <div className="small" style={{ marginTop: 10 }}>
+    Contains wheat (gluten) and sesame. May contain traces of nuts.
+  </div>
+</div>
+
 
           <div style={{ marginTop: 12 }} className="card">
             <div style={{ fontWeight: 800 }}>Disclaimer</div>
