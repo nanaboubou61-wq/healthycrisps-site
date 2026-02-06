@@ -90,12 +90,7 @@ Payment:`;
             </div>
           </div>
 
-          <div style={{ marginTop: 18 }} className="card">
-            <div style={{ fontWeight: 800 }}>Ingredients (exact as on packaging)</div>
-            <div className="small" style={{ marginTop: 10 }}>
-              PASTE EXACT INGREDIENTS TEXT FROM JAR HERE
-            </div>
-          </div>
+  
 
    <div style={{ marginTop: 18 }} className="card">
   <div style={{ fontWeight: 800 }}>Ingredients (exact as on packaging)</div>
