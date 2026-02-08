@@ -42,6 +42,18 @@ Payment:`;
         <div className="card">
           <div className="small">Healthy Crisps</div>
           <h1 className="h1">Zaatar Crisps</h1>
+  <div style={{ marginTop: 16 }}>
+  <img
+    src="/zaatar-crisps.png"
+    alt="Healthy Crisps Zaatar Rolls"
+    style={{
+      width: "100%",
+      borderRadius: 18,
+      border: "1px solid var(--border)"
+    }}
+  />
+</div>
+
           <p className="p">Classic zaatar flavor, baked to a light and satisfying crunch.</p>
 
           <div style={{ marginTop: 18 }} className="card">
