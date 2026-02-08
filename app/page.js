@@ -5,6 +5,19 @@ export default function Page() {
         <div>
           <div className="small">Healthy Crisps</div>
           <h1 className="h1">Zaatar Crisps — baked, not fried.</h1>
+  <div style={{ marginTop: 16 }}>
+  <img
+    src="/zaatar-crisps.png.png"
+    alt="Healthy Crisps Zaatar Rolls"
+    style={{
+      width: "100%",
+      maxWidth: 520,
+      borderRadius: 18,
+      border: "1px solid var(--border)"
+    }}
+  />
+</div>
+
           <p className="p">
             Made in small batches. No preservatives. Made in the UAE.
           </p>
