@@ -14,13 +14,21 @@ export default function RootLayout({ children }) {
   />
 </div>
 
-            <nav className="navLinks">
-              <a href="/">Home</a>
-              <a href="/product/zaatar-crisps">Product</a>
-              <a href="/about">About</a>
-              <a href="/faq">FAQ</a>
-              <a href="/contact">Contact</a>
-            </nav>
+    <nav className="navLinks">
+  <a href="/">Home</a>
+  <a href="/product/zaatar-crisps">Product</a>
+  <a href="/about">About</a>
+  <a href="/faq">FAQ</a>
+  <a href="/contact">Contact</a>
+  <a
+    href="https://instagram.com/healthycrispsuae"
+    target="_blank"
+    rel="noreferrer"
+  >
+    Instagram
+  </a>
+</nav>
+
             <a className="pill" href="/product/zaatar-crisps">Order</a>
           </div>
         </header>
