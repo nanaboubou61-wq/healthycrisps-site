@@ -14,7 +14,12 @@ export default function Contact() {
         </p>
 
         <div style={{ marginTop: 16 }}>
-          <a className="btn" href={whatsapp} target="_blank" rel="noreferrer">
+          <a
+            className="btn"
+            href={whatsapp}
+            target="_blank"
+            rel="noreferrer"
+          >
             Message us on WhatsApp
           </a>
         </div>
@@ -22,18 +27,19 @@ export default function Contact() {
         <div className="small" style={{ marginTop: 12 }}>
           WhatsApp: +{phone}
         </div>
+
+        <div className="small" style={{ marginTop: 8 }}>
+          Instagram:{" "}
+          <a
+            href="https://instagram.com/healthycrispsuae"
+            target="_blank"
+            rel="noreferrer"
+            style={{ fontWeight: 700 }}
+          >
+            @healthycrispsuae
+          </a>
+        </div>
       </div>
     </div>
   );
 }
-<div className="small" style={{ marginTop: 8 }}>
-  Instagram:{" "}
-  <a
-    href="https://instagram.com/YOURINSTAGRAM"
-    target="_blank"
-    rel="noreferrer"
-    style={{ fontWeight: 700 }}
-  >
-    @YOURINSTAGRAM
-  </a>
-</div>
