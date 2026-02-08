@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   <img
     src="/logo.png"
     alt="Healthy Crisps logo"
-    style={{ height: 42 }}
+    style={{ height: 64 }}
   />
 </div>
 
