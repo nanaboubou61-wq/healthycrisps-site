@@ -26,3 +26,14 @@ export default function Contact() {
     </div>
   );
 }
+<div className="small" style={{ marginTop: 8 }}>
+  Instagram:{" "}
+  <a
+    href="https://instagram.com/YOURINSTAGRAM"
+    target="_blank"
+    rel="noreferrer"
+    style={{ fontWeight: 700 }}
+  >
+    @YOURINSTAGRAM
+  </a>
+</div>
