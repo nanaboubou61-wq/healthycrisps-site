@@ -44,7 +44,7 @@ Payment:`;
           <h1 className="h1">Zaatar Crisps</h1>
   <div style={{ marginTop: 16 }}>
   <img
-    src="/zaatar-crisps.png"
+    src="/zaatar-crisps.png.png"
     alt="Healthy Crisps Zaatar Rolls"
     style={{
       width: "100%",
