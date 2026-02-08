@@ -41,6 +41,18 @@ export default function RootLayout({ children }) {
             <div className="small" style={{ marginTop: 8 }}>
               Prepared in a licensed kitchen in the UAE.
             </div>
+                <div className="small" style={{ marginTop: 8 }}>
+  Follow us on Instagram:{" "}
+  <a
+    href="https://instagram.com/YOURINSTAGRAM"
+    target="_blank"
+    rel="noreferrer"
+    style={{ fontWeight: 700 }}
+  >
+    @healthycrispsuae
+  </a>
+</div>
+
             <div className="small" style={{ marginTop: 8 }}>
               Currently delivering in Dubai. UAE-wide delivery coming soon.
             </div>
