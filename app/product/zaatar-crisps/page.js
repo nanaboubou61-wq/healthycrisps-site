@@ -6,6 +6,15 @@ const PRICE_SINGLE = 19.5;
 const PRICE_BUNDLE_EACH = 15;
 const BUNDLE_QTY = 4;
 
+const IMAGES = [
+  "/zaatar-crisps.png.png",
+  "/zaatar 2.png",
+  "/zaatar 3.png",
+  "/zaatar 4.png",
+  "/zaatar 5.png",
+  "/nutrition sheet.png"
+];
+
 function formatAED(n) {
   return `AED ${Number(n).toFixed(2)}`;
 }
@@ -20,6 +29,7 @@ function totalPrice(qty) {
 
 export default function ProductPage() {
   const [qty, setQty] = useState(1);
+  const [activeImage, setActiveImage] = useState(IMAGES[0]);
 
   const unit = unitPrice(qty);
   const total = totalPrice(qty);
@@ -42,51 +52,40 @@ Payment:`;
         <div className="card">
           <div className="small">Healthy Crisps</div>
           <h1 className="h1">Zaatar Crisps</h1>
-  <div style={{ marginTop: 16 }}>
- import { useState } from "react";
 
-const images = [
-  "/zaatar-crisps.png",
-  "/zaatar 1.png",
-  "/zaatar-2.png",
-  "/zaatar-3.png"
-];
+          {/* Image Gallery */}
+          <div style={{ marginTop: 16 }}>
+            <img
+              src={activeImage}
+              alt="Healthy Crisps Zaatar Crisps"
+              style={{
+                width: "100%",
+                borderRadius: 18,
+                border: "1px solid var(--border)"
+              }}
+            />
 
-const [activeImage, setActiveImage] = useState(images[0]);
-
-<div style={{ marginTop: 16 }}>
-  <img
-    src={activeImage}
-    alt="Healthy Crisps Zaatar Crisps"
-    style={{
-      width: "100%",
-      borderRadius: 18,
-      border: "1px solid var(--border)"
-    }}
-  />
-
-  <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
-    {images.map((img) => (
-      <img
-        key={img}
-        src={img}
-        alt=""
-        onClick={() => setActiveImage(img)}
-        style={{
-          width: 80,
-          height: 80,
-          objectFit: "cover",
-          borderRadius: 12,
-          border: activeImage === img
-            ? "2px solid #000"
-            : "1px solid var(--border)",
-          cursor: "pointer"
-        }}
-      />
-    ))}
-  </div>
-</div>
-
+            <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
+              {IMAGES.map((img) => (
+                <img
+                  key={img}
+                  src={img}
+                  alt=""
+                  onClick={() => setActiveImage(img)}
+                  style={{
+                    width: 80,
+                    height: 80,
+                    objectFit: "cover",
+                    borderRadius: 12,
+                    border: activeImage === img
+                      ? "2px solid #000"
+                      : "1px solid var(--border)",
+                    cursor: "pointer"
+                  }}
+                />
+              ))}
+            </div>
+          </div>
 
           <p className="p">Classic zaatar flavor, baked to a light and satisfying crunch.</p>
 
@@ -98,14 +97,19 @@ const [activeImage, setActiveImage] = useState(images[0]);
                   {formatAED(unit)} <span className="small">/ pack</span>
                 </div>
                 <div className="small" style={{ marginTop: 6 }}>
-                  Buy 4 packs for AED 60 <span style={{ color: "var(--muted)" }}>(auto-applied)</span>
+                  Buy 4 packs for AED 60{" "}
+                  <span style={{ color: "var(--muted)" }}>(auto-applied)</span>
                 </div>
               </div>
 
               <div className="qty">
-                <button className="qtyBtn" onClick={() => setQty(q => Math.max(1, q - 1))}>−</button>
+                <button className="qtyBtn" onClick={() => setQty((q) => Math.max(1, q - 1))}>
+                  −
+                </button>
                 <div style={{ minWidth: 32, textAlign: "center", fontWeight: 800 }}>{qty}</div>
-                <button className="qtyBtn" onClick={() => setQty(q => q + 1)}>+</button>
+                <button className="qtyBtn" onClick={() => setQty((q) => q + 1)}>
+                  +
+                </button>
               </div>
             </div>
 
@@ -127,7 +131,13 @@ const [activeImage, setActiveImage] = useState(images[0]);
               <div style={{ fontSize: 18, fontWeight: 800 }}>{formatAED(total)}</div>
             </div>
 
-            <a className="btn" style={{ marginTop: 14, textAlign: "center", width: "100%" }} href={whatsappUrl} target="_blank" rel="noreferrer">
+            <a
+              className="btn"
+              style={{ marginTop: 14, textAlign: "center", width: "100%" }}
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
               Order via WhatsApp
             </a>
 
@@ -136,21 +146,19 @@ const [activeImage, setActiveImage] = useState(images[0]);
             </div>
           </div>
 
-  
+          <div style={{ marginTop: 18 }} className="card">
+            <div style={{ fontWeight: 800 }}>Ingredients (exact as on packaging)</div>
+            <div className="small" style={{ marginTop: 10 }}>
+              Wheat flour rolls, zaatar (thyme, sesame seeds, sumac, salt), olive oil.
+            </div>
+          </div>
 
-   <div style={{ marginTop: 18 }} className="card">
-  <div style={{ fontWeight: 800 }}>Ingredients (exact as on packaging)</div>
-  <div className="small" style={{ marginTop: 10 }}>
-    Wheat flour rolls, zaatar (thyme, sesame seeds, sumac, salt), olive oil.
-  </div>
-</div>
-<div style={{ marginTop: 12 }} className="card">
-  <div style={{ fontWeight: 800 }}>Allergens (exact as on packaging)</div>
-  <div className="small" style={{ marginTop: 10 }}>
-    Contains wheat (gluten) and sesame. May contain traces of nuts.
-  </div>
-</div>
-
+          <div style={{ marginTop: 12 }} className="card">
+            <div style={{ fontWeight: 800 }}>Allergens (exact as on packaging)</div>
+            <div className="small" style={{ marginTop: 10 }}>
+              Contains wheat (gluten) and sesame. May contain traces of nuts.
+            </div>
+          </div>
 
           <div style={{ marginTop: 12 }} className="card">
             <div style={{ fontWeight: 800 }}>Disclaimer</div>
@@ -165,6 +173,7 @@ const [activeImage, setActiveImage] = useState(images[0]);
             <div style={{ fontWeight: 800 }}>More flavors</div>
             <span className="badge">Coming Soon</span>
           </div>
+
           <p className="p" style={{ marginTop: 10 }}>
             We’re starting with Zaatar. New flavors are on the way.
           </p>
