@@ -43,16 +43,50 @@ Payment:`;
           <div className="small">Healthy Crisps</div>
           <h1 className="h1">Zaatar Crisps</h1>
   <div style={{ marginTop: 16 }}>
+ import { useState } from "react";
+
+const images = [
+  "/zaatar-crisps.png",
+  "/zaatar 1.png",
+  "/zaatar-2.png",
+  "/zaatar-3.png"
+];
+
+const [activeImage, setActiveImage] = useState(images[0]);
+
+<div style={{ marginTop: 16 }}>
   <img
-    src="/zaatar-crisps.png.png"
-    alt="Healthy Crisps Zaatar Rolls"
+    src={activeImage}
+    alt="Healthy Crisps Zaatar Crisps"
     style={{
       width: "100%",
       borderRadius: 18,
       border: "1px solid var(--border)"
     }}
   />
+
+  <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
+    {images.map((img) => (
+      <img
+        key={img}
+        src={img}
+        alt=""
+        onClick={() => setActiveImage(img)}
+        style={{
+          width: 80,
+          height: 80,
+          objectFit: "cover",
+          borderRadius: 12,
+          border: activeImage === img
+            ? "2px solid #000"
+            : "1px solid var(--border)",
+          cursor: "pointer"
+        }}
+      />
+    ))}
+  </div>
 </div>
+
 
           <p className="p">Classic zaatar flavor, baked to a light and satisfying crunch.</p>
 
