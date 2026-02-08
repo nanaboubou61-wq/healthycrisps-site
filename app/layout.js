@@ -6,13 +6,12 @@ export default function RootLayout({ children }) {
       <body>
         <header className="nav">
           <div className="container navRow">
-           <div className="brand" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <div className="brand">
   <img
     src="/logo.png"
     alt="Healthy Crisps logo"
-    style={{ height: 36 }}
+    style={{ height: 42 }}
   />
-  <span>Healthy Crisps</span>
 </div>
 
             <nav className="navLinks">
