@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 const PRICE_SINGLE = 19.5;
 const PRICE_BUNDLE_EACH = 15;
@@ -29,7 +29,49 @@ function totalPrice(qty) {
 
 export default function ProductPage() {
   const [qty, setQty] = useState(1);
-  const [activeImage, setActiveImage] = useState(IMAGES[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeImage = IMAGES[activeIndex];
+
+  function prevImage() {
+    setActiveIndex((i) => (i - 1 + IMAGES.length) % IMAGES.length);
+  }
+
+  function nextImage() {
+    setActiveIndex((i) => (i + 1) % IMAGES.length);
+  }
+
+  // Swipe support
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+
+  function onTouchStart(e) {
+    const t = e.touches && e.touches[0];
+    if (!t) return;
+    touchStartX.current = t.clientX;
+    touchStartY.current = t.clientY;
+  }
+
+  function onTouchEnd(e) {
+    const startX = touchStartX.current;
+    const startY = touchStartY.current;
+    if (startX == null || startY == null) return;
+
+    const t = e.changedTouches && e.changedTouches[0];
+    if (!t) return;
+
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+
+    const absX = Math.abs(dx);
+    const absY = Math.abs(dy);
+
+    // swipe only if mostly horizontal and enough distance
+    if (absX < 40 || absX < absY) return;
+
+    if (dx < 0) nextImage(); // swipe left -> next
+    else prevImage();        // swipe right -> previous
+  }
 
   const unit = unitPrice(qty);
   const total = totalPrice(qty);
@@ -53,37 +95,93 @@ Payment:`;
           <div className="small">Healthy Crisps</div>
           <h1 className="h1">Zaatar Crisps</h1>
 
-          {/* Image Gallery */}
+          {/* Image Gallery (Swipe on mobile, arrows on desktop) */}
           <div style={{ marginTop: 16 }}>
-            <img
-              src={activeImage}
-              alt="Healthy Crisps Zaatar Crisps"
-              style={{
-                width: "100%",
-                borderRadius: 18,
-                border: "1px solid var(--border)"
-              }}
-            />
+            <div
+              style={{ position: "relative" }}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
+              <img
+                src={activeImage}
+                alt="Healthy Crisps Zaatar Crisps"
+                style={{
+                  width: "100%",
+                  borderRadius: 18,
+                  border: "1px solid var(--border)",
+                  touchAction: "pan-y"
+                }}
+              />
 
+              {/* ARROWS: hidden on mobile, visible on desktop */}
+              <div className="desktopOnly">
+                <button
+                  onClick={prevImage}
+                  aria-label="Previous image"
+                  style={{
+                    position: "absolute",
+                    left: 10,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: 42,
+                    height: 42,
+                    borderRadius: 14,
+                    border: "1px solid var(--border)",
+                    background: "rgba(255,255,255,0.9)",
+                    cursor: "pointer",
+                    fontSize: 20,
+                    fontWeight: 800
+                  }}
+                >
+                  ‹
+                </button>
+
+                <button
+                  onClick={nextImage}
+                  aria-label="Next image"
+                  style={{
+                    position: "absolute",
+                    right: 10,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: 42,
+                    height: 42,
+                    borderRadius: 14,
+                    border: "1px solid var(--border)",
+                    background: "rgba(255,255,255,0.9)",
+                    cursor: "pointer",
+                    fontSize: 20,
+                    fontWeight: 800
+                  }}
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+
+            {/* Thumbnails */}
             <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
-              {IMAGES.map((img) => (
+              {IMAGES.map((img, idx) => (
                 <img
                   key={img}
                   src={img}
                   alt=""
-                  onClick={() => setActiveImage(img)}
+                  onClick={() => setActiveIndex(idx)}
                   style={{
                     width: 80,
                     height: 80,
                     objectFit: "cover",
                     borderRadius: 12,
-                    border: activeImage === img
-                      ? "2px solid #000"
-                      : "1px solid var(--border)",
+                    border: activeIndex === idx ? "2px solid #000" : "1px solid var(--border)",
                     cursor: "pointer"
                   }}
                 />
               ))}
+            </div>
+
+            {/* Tip: show only on mobile */}
+            <div className="mobileOnly small" style={{ marginTop: 8 }}>
+              Tip: Swipe left/right on the image to view more photos.
             </div>
           </div>
 
@@ -185,6 +283,16 @@ Payment:`;
           </div>
         </div>
       </div>
+
+      {/* Small CSS helpers */}
+      <style>{`
+        .desktopOnly { display: none; }
+        .mobileOnly { display: block; }
+        @media (min-width: 900px) {
+          .desktopOnly { display: block; }
+          .mobileOnly { display: none; }
+        }
+      `}</style>
     </div>
   );
 }
